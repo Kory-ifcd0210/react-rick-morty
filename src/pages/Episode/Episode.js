@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable compat/compat */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable react/no-unused-state */
@@ -10,10 +11,9 @@ import CharacterCard from "../../components/CharacterCard";
 class Episode extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
 
     this.state = {
-      episode: null,
+      episode: props.match.params.episodeId,
       characters: [],
       hasLoaded: false,
       hasError: false,
@@ -26,20 +26,15 @@ class Episode extends Component {
   };
 
   async loadCharacter() {
-    await axios.get(`https://rickandmortyapi.com/api/episode/1`)
+    await axios.get(`https://rickandmortyapi.com/api/episode/${ this.state.episode}`)
       .then(async res => {
         const charactersURL= res.data.characters;
-      //   Promise.all(characters.map(character=>fetch(character))).then(responses =>
-      //     Promise.all(responses.map(res2 => res2.text()))
-      // ).then(texts => {
-      //     console.log(texts)
-      // })
       const characters = await Promise.all(charactersURL.map(async characterURL => {
         const resp = await fetch(characterURL);
         return resp.json();
       }));
       this.setState({
-        characters: characters,
+        characters: characters
       });
   })
 };
