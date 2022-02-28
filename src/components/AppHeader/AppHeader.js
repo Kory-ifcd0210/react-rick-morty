@@ -2,10 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import * as routes from "../../constants/routes";
+import "./AppHeader.scss";
 
 function AppHeader({ ...props }) {
   return (
-    <header className="bg-primary mb-4" {...props}>
+    <header className="header-bg mb-4" {...props}>
       <div className="container">
         <div className="row">
           <nav className="navbar navbar-expand navbar-dark">

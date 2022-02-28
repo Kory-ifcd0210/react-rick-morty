@@ -7,10 +7,12 @@ import Episode from "./pages/Episode/Episode";
 import Character from "./pages/Character/Character";
 import Location from "./pages/Location/Location";
 import * as routes from "./constants/routes";
+import "./App.scss";
 
 function App() {
   return (
-    <Router>
+    <div className="bg">
+    <Router >
       <Switch>
         <Route exact path={`${routes.HOME}`} component={Home} />
         <Route path={`${routes.EPISODE}/:episodeId`} component={Episode} />
@@ -18,6 +20,7 @@ function App() {
         <Route path={`${routes.LOCATION}/:locationId`} component={Location} />
       </Switch>
     </Router>
+    </div>
   );
 }
 
