@@ -80,7 +80,7 @@ class Character extends Component {
             />
                 <hr/>
             <div className="row">
-            <h3 className="CharacterCard__name h4"> Episodes</h3>
+            <h3 className="CharacterCard__name"> Episodes</h3>
             <hr/>
             {episodeList.map((episode) => (
                 <EpisodeCard
